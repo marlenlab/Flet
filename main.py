@@ -17,14 +17,15 @@ def main_page(page: ft.Page):
 
     greeting_histori = []
 
-    histori_text = ft.Text('История приветствий')
+    histori_text = ft.Text('История приветствий', size=25, weight=ft.FontWeight.BOLD)
+    histori_text.visible = True
 
-    
+    def toggle_history(_):
 
+        histori_text.visible = not histori_text.visible
 
+        page.update()
 
-    
-    
     # # Добавлям текст  в страницу
     # greeting = ft.Text(value="Hello")
 
@@ -73,7 +74,7 @@ def main_page(page: ft.Page):
 
     name_random = ft.ElevatedButton( "Random Name",icon=ft.Icons.ADD,on_click=add_name)
 
-
+    toggle_button = ft.ElevatedButton("Скрыть / Показать историю",icon=ft.Icons.VISIBILITY,on_click=toggle_history)
 
     # Создаем введение имени через страницу
     name_input = ft.TextField(label="Введите имя:", on_submit = on_button_click)
@@ -96,12 +97,9 @@ def main_page(page: ft.Page):
 
     clear_button = ft.IconButton(icon=ft.Icons.DELETE, on_click=on_clear_button)
 
-
-
-
-    
+    buttons_row = ft.Row([elevated_button, name_random, clear_button])
     # Добавляем элементы в страницы чтоб они работали
-    page.add(hello_text, name_input, elevated_button, histori_text, clear_button, name_random )
+    page.add(hello_text, name_input, buttons_row, toggle_button, histori_text)
 
 # text_button, icon_button
 
