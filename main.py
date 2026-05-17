@@ -34,6 +34,7 @@ def main_page(page: ft.Page):
         name = name_input.value.strip()
 
         current_time = datetime.now().strftime("%H:%M:%S")
+        # current_time = datetime.now().strftime("%Y:%m:%d - %H:%M:%S")
 
 
         if name:
@@ -57,6 +58,7 @@ def main_page(page: ft.Page):
 
         random_name = random.choice(names_list)
         current_time = datetime.now().strftime("%H:%M:%S")
+        # current_time = datetime.now().strftime("%Y:%m:%d - %H:%M:%S")
         hello_text.value = f"Hello {random_name}"
         greeting_histori.append(f"Случайное имя - {random_name} время: {current_time}" )
         histori_text.value = ('История приветствий:\n' + '\n'.join(greeting_histori))
@@ -98,6 +100,7 @@ def main_page(page: ft.Page):
     clear_button = ft.IconButton(icon=ft.Icons.DELETE, on_click=on_clear_button)
 
     buttons_row = ft.Row([elevated_button, name_random, clear_button])
+    
     # Добавляем элементы в страницы чтоб они работали
     page.add(hello_text, name_input, buttons_row, toggle_button, histori_text)
 
